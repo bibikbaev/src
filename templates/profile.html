@@ -1,0 +1,456 @@
+{% load  static %}
+{% load users_extras %}
+{% load qr_code %}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="keywords"
+    />
+    <meta
+      name="description"
+    />
+    <meta name="robots" content="noindex,nofollow" />
+
+      <title>Основная статистика</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+      <link rel="stylesheet" href="//flamp.ru/static/styles.css?v=2">
+
+      <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/">
+    <!-- Custom CSS -->
+    <link
+      href="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      <style>
+          .card {
+            border-radius: 8px;
+            }
+          .l1 {
+              padding-top: 6px;
+          }
+          </style>
+  </head>
+
+  <body>
+
+
+    <div class="preloader">
+      <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+      </div>
+    </div>
+
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+
+      <header class="topbar" data-navbarbg="skin5">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+          <div class="navbar-header" data-logobg="skin5">
+            <!-- ============================================================== -->
+            <!-- Logo -->
+            <!-- ============================================================== -->
+          </div>
+          <!-- ============================================================== -->
+          <!-- End Logo -->
+
+
+          <div class="mx-auto row">
+              <div class="col-4">
+          <a
+              class="d-inline nav-toggler waves-effect waves-light d-block d-md-none"
+              href="{% url 'profile' %}"
+              ><h4>Обзор</h4><i class="ti-menu ti-close"></i
+            ></a>
+            </div>
+
+              <div class="col-4">
+            <a
+              class="d-inline nav-toggler waves-effect waves-light d-block d-md-none"
+              href="{% url 'all-reviews' %}"
+            ><h4>Отзывы</h4><i class="ti-menu ti-close"></i
+            ></a>
+            </div>
+              <div class="col-4">
+            <a
+              class="d-inline nav-toggler waves-effect waves-light d-block d-md-none"
+              href="{% url 'profile-edit' %}"
+              ><h4>Профиль</h4><i class="ti-menu ti-close"></i
+            ></a>
+                  </div>
+              </div>
+          <!-- ============================================================== -->
+          <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+            <!-- ============================================================== -->
+            <!-- toggle and nav items -->
+            <!-- ============================================================== -->
+
+          </div>
+        </nav>
+      </header>
+      <!-- ============================================================== -->
+      <!-- End Topbar header -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Left Sidebar - style you can find in sidebar.scss  -->
+      <!-- ============================================================== -->
+      <aside class="left-sidebar" data-sidebarbg="skin6">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+          <!-- Sidebar navigation-->
+          <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+              <!-- User Profile-->
+              <li>
+                <!-- User Profile-->
+                <div class="user-profile d-flex no-block dropdown m-t-20">
+                  <div class="user-pic">
+                    <img src="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/assets/images/users/1.jpg" alt="users" class="rounded-circle" width="40">
+                  </div>
+                  <div class="user-content hide-menu m-l-10">
+                    <a href="#" class="" id="Userdd" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <h5 class="m-b-0 user-name font-medium">
+                        Владелец
+                      </h5>
+                      <span class="op-5 user-email">{{ user.get_username }}</span>
+                    </a>
+
+                  </div>
+                </div>
+                <!-- End User Profile-->
+              </li>
+              <!-- User Profile-->
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{% url 'profile' %}"
+                  aria-expanded="false">
+                <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2 align-text-bottom" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    <span class="ms-2 hide-menu">Обзор</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{% url 'all-reviews' %}"
+                  aria-expanded="false">
+                <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users align-text-bottom" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <span class="ms-2 hide-menu">Отзывы</span>
+                </a>
+
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{% url 'profile-edit' %}"
+                  aria-expanded="false">
+                  <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home align-text-bottom" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span class="ms-2 hide-menu">Профиль</span></a>
+              </li>
+            </ul>
+          </nav>
+          <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+      </aside>
+      <!-- ============================================================== -->
+      <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Page wrapper  -->
+      <!-- ============================================================== -->
+      <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+          <div class="row align-items-center">
+            <div class="col-5 mt-4 ms-4">
+              <h4 class="page-title">Обзор</h4>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Обзор</li>
+                  </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="container-fluid pt-2">
+
+
+
+
+
+<ul class="nav nav-pills" id="myTab" role="tablist">
+    {% regroup reviews by company as company_list %}
+      {% for company in company_list %}
+  <li class="nav-item" role="presentation">
+      <button class="nav-link {% if forloop.first %}active{%  endif %}" id="{{ company.grouper.slug }}-tab" data-bs-toggle="tab" data-bs-target="#{{ company.grouper.slug }}" type="button" role="tab" aria-controls="{{ company.grouper.slug }}" aria-selected="{% if forloop.first %}true{%  else %}false{%  endif %}">{{ company.grouper }}</button>
+  </li>
+    {% endfor %}
+
+</ul>
+
+<div class="mt-4 tab-content" id="myTabContent">
+      {% regroup reviews by company as company_list %}
+      {% for company in company_list %}
+<div class="tab-pane fade {% if forloop.first %}show active{%  endif %}" id="{{ company.grouper.slug }}" role="tabpanel" aria-labelledby="{{ company.grouper.slug }}-tab">
+
+      <div class="row">
+           <div class="col-12 col-sm-6">
+               <div class="row">
+              <div class="col-3 col-sm-2">
+                 <div class="card">
+                  <div class="user-stats__item">
+		            <div class="user-stats__counter">
+                     <svg width="24" height="24" class="icon icon--mark-crown icon--basic">
+                    <symbol id="icon-mark-crown" viewBox="0 0 24 24"><path d="M3 2l5 6 4-6 4 6 5-6-2 16H5L3 2zm2 18h14v2H5v-2z"/></symbol>
+                         <use xlink:href="#icon-mark-crown" class="js-icon"></use>
+                    </svg>
+			        <h3 class="t-text user-stats__counter-label  mb-0">
+                  средняя
+			        </h3>
+			        <p class="user-stats__counter-value  mb-0">
+                        {{ company.grouper.calc_avg  }}
+			        </p>
+                    </div>
+	            </div>
+                 </div>
+              </div>
+
+              <div class="col-9 col-sm-10">
+
+                  <div class="card">
+
+          <div class="user-stats__item user-stats__item--has-graph">
+		<div class="user-stats__counter">
+			<cat-brand-icon icon="mark-review">
+                <svg width="24" height="24" class="icon icon--mark-review icon--basic">
+                    <symbol id="icon-mark-review" viewBox="0 0 24 24"><path d="M22.59 17l-2.9-6a2.67 2.67 0 0 0 1-3.48 2.63 2.63 0 0 0-3.31-1.26L14.73.68 9.22 7.2l4.9 9.8zM3.55 10.61a4.59 4.59 0 0 0-2.34 2.73A4.66 4.66 0 0 0 1.56 17a4.79 4.79 0 0 0 6.15 2l.49-.21 1.4 2.61a3 3 0 0 0 2.67 1.6 3 3 0 0 0 1.17-.24l1.09-.47-6.85-13.7z"/></symbol>
+		<use xlink:href="#icon-mark-review" class="js-icon"></use>
+	</svg>
+
+</cat-brand-icon>
+			<h3 class="t-text user-stats__counter-label mb-0">
+				отзывы
+			</h3>
+
+			<p class="user-stats__counter-value mb-0">
+				{{company.grouper.calc_count}}
+			</p>
+		</div>
+			<div class="user-stats__content">
+				<cat-entities-graph-estimates cat-store="aliases/Current"
+											  is-user="true"><div class="graph-estimates graph-estimates--reversed">
+	<ul class="list graph-estimates__bars">
+			<li class="graph-estimates__bar graph-estimates__bar--5" style="width: calc(100% * {{company.grouper.calc_five}}/{{company.grouper.get_max}})"></li>
+			<li class="graph-estimates__bar graph-estimates__bar--4" style="width: calc(100% * {{company.grouper.calc_four}}/{{company.grouper.get_max}})"></li>
+			<li class="graph-estimates__bar graph-estimates__bar--3" style="width: calc(100% * {{company.grouper.calc_three}}/{{company.grouper.get_max}})"></li>
+			<li class="graph-estimates__bar graph-estimates__bar--2" style="width: calc(100% * {{company.grouper.calc_two}}/{{company.grouper.get_max}})"></li>
+			<li class="graph-estimates__bar graph-estimates__bar--1" style="width: calc(100% * {{company.grouper.calc_one}}/{{company.grouper.get_max}})"></li>
+	</ul>
+	<ul class="list graph-estimates__values">
+			<li class="t-text t-text--small graph-estimates__value">{{company.grouper.calc_five}}</li>
+			<li class="t-text t-text--small graph-estimates__value">{{company.grouper.calc_four}}</li>
+			<li class="t-text t-text--small graph-estimates__value">{{company.grouper.calc_three}}</li>
+			<li class="t-text t-text--small graph-estimates__value">{{company.grouper.calc_two}}</li>
+			<li class="t-text t-text--small graph-estimates__value">{{company.grouper.calc_one}}</li>
+	</ul>
+</div></cat-entities-graph-estimates>
+			</div>
+	</div>
+                          </div>
+          </div>
+               </div>
+
+
+                         <div class="row">
+                             <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                         <div class="align-items-center row"> <div class="col-6 pe-0"><h4 class="card-title">QR-код для использования</h4></div> <div class="col-6 col-sm-3 ps-0 ms-0"> <a class="ms-0 mb-1 btn btn-primary" href="{% qr_url_from_text 'http://127.0.0.1:8000/'|add:company.grouper.slug %}" download={{"QR-код-для-"|add:company.grouper.slug }}>Скачать</a></div></div>
+                                            <img class="mt-3 mx-auto d-block" id="qrcode" src="{% qr_url_from_text 'http://127.0.0.1:8000/'|add:company.grouper.slug size="M" %}">
+                                        </div>
+                                    </div>
+
+
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Информация</h4>
+                  <div class="feed-widget">
+                    <ul class="list-style-none feed-body m-0">
+                        <li class="feed-item">
+                        <div class="feed-icon bg-success">
+<svg class="mt-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+  <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/>
+</svg>
+                        </div>
+                        Перехвачено негативных отзывов: {{company.grouper.calc_one|add:company.grouper.calc_two|add:company.grouper.calc_three}}
+                      </li>
+                     {% for key, values in company.grouper.get_clicked.items  %}
+                      <li class="feed-item">
+                        <div class="feed-icon bg-info">
+<svg class="mt-1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+  <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+</svg>                        </div>
+                       Совершено переходов на {{ key }}: {{ values }}
+                      </li>
+                      {%  endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+                         </div>
+
+          </div>
+
+                         <div class="col-12 col-sm-6">
+
+                             <div class="row">
+                                         <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                    <div class="align-items-center row">
+                        <div class="col-6 col-sm-4">
+                    <h4 class="card-title">Последние отзывы</h4>
+                            </div>
+                        <div class="col-6 col-sm-4">
+                        <a href="{{ company.grouper.get_absolute_url_reviews }}" class="mb-1 btn btn-primary">Посмотреть все</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-widgets scrollable">
+                  <!-- Comment Row -->
+
+          {% for review in company.list|slice:":3" %}
+
+                  <div class="d-flex flex-row comment-row m-t-0">
+                    <div class="p-2">
+                    {% if forloop.counter == 1 %}
+
+                     <img src="{% static 'evaluation/user1.png' %}" width="50" alt="user">
+                    {% elif forloop.counter == 2 %}
+                      <img src="{% static 'evaluation/user2.png' %}" width="50" alt="user">
+                    {% elif forloop.counter == 3 %}
+                      <img src="{% static 'evaluation/user3.png' %}" width="50" alt="user">
+
+                    {% endif %}
+
+                    </div>
+                    <div class="comment-text w-100">
+
+                      <h6 class="font-medium">
+                        {% if review.name %}
+                          {{ review.name }}
+                        {% else %}
+                            Анонимно
+                        {% endif  %}
+
+                      </h6>
+                      <span class="m-b-15 d-block"
+                        >
+                        {% if review.message %}
+                          {{ review.message }}
+                        {% else %}
+                            Без текста
+                        {% endif  %}
+
+                      </span>
+                      <div class="comment-footer">
+                        <span class="text-muted float-end">{{ review.get_time|date:"H:i d E, Y" }}</span>
+                        <span class="l1 label label-success label-rounded">5</span
+                        >
+
+                        {% if review.contact_info %}
+                          <span class="l1 label label-rounded label-primary">
+                          Оставили контакты: <b>{{ review.contact_info }}</b>
+                          </span>
+                        {% endif  %}
+
+                      </div>
+                    </div>
+                  </div>
+          {% endfor %}
+                </div>
+
+              </div>
+
+            </div>
+                   </div>
+
+                         </div>
+
+
+</div>
+
+  </div>
+        {% endfor %}
+
+</div>
+
+
+
+
+
+          <!-- ============================================================== -->
+          <!-- Recent comment and chats -->
+          <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+          Создано ReviewSirius
+
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Page wrapper  -->
+      <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+
+    <script src="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/dist/js/app-style-switcher.js"></script>
+    <!--Wave Effects -->
+    <script src="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/dist/js/custom.js"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="https://demos.wrappixel.com/free-admin-templates/bootstrap/xtreme-bootstrap-free/dist/js/pages/dashboards/dashboard1.js"></script>
+
+  </body>
+</html>

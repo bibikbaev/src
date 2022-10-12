@@ -1,0 +1,173 @@
+{% load  static %}
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>{{ title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Favicons -->
+<meta name="theme-color" content="#712cf9">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+/* rtl:begin:ignore */
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+/* rtl:end:ignore */
+
+
+/* Featurettes
+    </style>
+
+    
+  </head>
+  <body>
+    
+<main>
+  <div class="container py-4 text-center">
+    <header class="mb-4">
+        <span class="fs-4">Будем благодарны, если оставите отзыв о нашей работе на любой площадке!</span>
+        <img class="mb-2" src="{% static 'evaluation/smile.png' %}" alt="Мое изображение">
+
+    </header>
+      </div>
+
+
+
+    <div class="container marketing">
+    <div class="row d-flex justify-content-center">
+
+     	{% for link in links %}
+
+        <div class="col-lg-4">
+
+        {% if link.site.title == "Фламп" %}
+        <img class="mb-2" src="{% static 'evaluation/flamp_round.svg' %}" width="140" height="140" alt="Мое изображение">
+        <h2 class="fw-normal">{{ link.site }}</h2>
+        <p><a class="btn btn-primary sitelink" id="flamp" href="{{ link.link }}">Оставить отзыв &raquo;</a></p>
+
+        {% elif link.site.title == "2ГИС" %}
+        <img class="mb-2" src="{% static 'evaluation/2gis_round.png' %}" width="140" height="140" alt="Мое изображение">
+        <h2 class="fw-normal">{{ link.site }}</h2>
+        <p><a class="btn btn-success sitelink" id="2gis" href="{{ link.link }}">Оставить отзыв &raquo;</a></p>
+
+        {% elif link.site.title == "Яндекс карты" %}
+        <img class="mb-2" src="{% static 'evaluation/yandex_round.png' %}" width="140" height="140" alt="Мое изображение">
+        <h2 class="fw-normal">{{ link.site }}</h2>
+        <p><a class="btn btn-danger sitelink" id="ymap" href="{{ link.link }}">Оставить отзыв &raquo;</a></p>
+
+        {% elif link.site.title == "Yell" %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 30 28"><path d="M28.784 27.97c1.798.516-.515-5.895-.515-5.895 1.03-3.08 2.05-13.595 1.41-16.8-.64-3.206-3.04-3.095-7.45-3.972C17.74.403 6.45-.112 4 .02 1.565.147-.225 1.81.025 5.15c.257 3.33 4.163 15.74 6.1 18.82 1.93 3.08 4.783 2.542 6.485 2.336 2.334-.288 11.12-2.336 11.12-2.336-.786-1.01 3.256 3.484 5.053 4h.001zM17 8.59l1.564-3.324h4.68l-5.116 9.742v5.74h-5.37v-5.74l-2.86-5.446-2.263-4.296h4.68l3.124 6.625L17 8.59z" fill="#ED484A" fill-rule="evenodd"/></svg>
+        <h2 class="fw-normal">{{ link.site }}</h2>
+        <p><a class="btn btn-outline-danger sitelink" id="yell"  href="{{ link.link }}">Оставить отзыв &raquo;</a></p>
+
+
+
+        {% endif %}
+
+
+      </div><!-- /.col-lg-4 -->
+       {% endfor %}
+
+    </div><!-- /.row -->
+
+       </div>
+
+
+</main>
+
+  <script type="text/javascript">
+   $( document ).ready(function() {
+    $( ".sitelink" ).click(function() {
+            var dict_site = {
+              "flamp" : "Фламп",
+              "2gis" : "2ГИС",
+              "ymap" : "Яндекс карты",
+              "yell" : "Yell",
+            };
+           var post_data = {};
+           post_data.csrfmiddlewaretoken = "{{ csrf_token }}";
+           post_data.sended = "{{ data|safe }}";
+           post_data.message = "{{msg}}";
+           post_data.company = "{{company_slug}}";
+           var id = $(this).attr('id');
+           post_data.site = dict_site[id]
+            $.ajax({
+            url :  "{% url 'update' %}",
+            type: 'post',
+            data : post_data,
+            success : function(response){
+                console.log(response)
+            },
+            error : function(response){
+                console.log(response)
+            }
+        });
+    });
+    });
+  </script>
+  </body>
+</html>
