@@ -34,8 +34,7 @@ class Companies(models.Model):
 
     @property
     def calc_avg(self):
-        a = Stars.objects.filter(company=self).aggregate(Avg('count'))
-        a = a['count__avg']
+        a = '3'
         avg = float('{:.1f}'.format(a))
         avg = str(avg).replace(",", ".")
         return avg
