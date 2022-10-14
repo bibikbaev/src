@@ -34,9 +34,7 @@ class Companies(models.Model):
 
     @property
     def calc_avg(self):
-        b = Stars.objects.aggregate(Avg('count'))
-        # b = b['count__avg']
-        a = 3
+        a = Stars.objects.filter(company=self).aggregate(Avg('count'))['count__avg']
         avg = float('{:.1f}'.format(a))
         avg = str(avg).replace(",", ".")
         return avg
@@ -113,15 +111,22 @@ class CompanySites(models.Model):
 
 
 class Stars(models.Model):
+    RATINGS = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    )
     company = models.ForeignKey(Companies, on_delete=models.SET_NULL, null=True, verbose_name='Компания (Филиал)')
-    count = models.CharField(max_length=4, verbose_name='Количество', blank=True, null=True)
+    count = models.IntegerField(verbose_name='Количество', blank=True, null=True, choices=RATINGS)
     time = models.DateTimeField(default=timezone.now, verbose_name='Оставлено')
     message = models.CharField(max_length=2000, verbose_name='Отзыв', blank=True, null=True)
     contact_info = models.CharField(max_length=200, verbose_name='Контактная информация', blank=True, null=True)
     name = models.CharField(max_length=100, verbose_name='Имя', blank=True, null=True)
 
     def __str__(self):
-        return self.count + " для " + self.company.title + " в " + self.time.strftime('%H:%M %d.%m.%Y')
+        return str(self.count) + " для " + self.company.title + " в " + self.time.strftime('%H:%M %d.%m.%Y')
 
     class Meta:
         verbose_name = 'Оценка'
