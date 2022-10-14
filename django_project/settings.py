@@ -26,7 +26,7 @@ SECRET_KEY = 'Jh0C27fi4zaHrCiCcsjwkwZCy1TtdJgO1UoLOEhcbJwAIRjzggk0b8zukvaNocUA'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['80.78.254.24', '2a00:f940:2:4:2::45cc', '80-78-254-24.cloudvps.regruhosting.ru', 'localhost']
+ALLOWED_HOSTS = ['80.78.254.24', '2a00:f940:2:4:2::45cc', '80-78-254-24.cloudvps.regruhosting.ru', 'localhost', 'siriusreview.ru']
 # ALLOWED_HOSTS = ['*']
 
 # Application definition
