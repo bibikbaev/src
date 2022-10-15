@@ -37,7 +37,7 @@ class SendStar(FormView):
         c = Companies.objects.get(slug=self.kwargs.get("company_slug"))
         s = Stars.objects.create(company=c, count=count_stars)
         self.request.session['rew'] = s.id
-        message = "На " + c.title + " поставили оценку " + count_stars
+        message = "На " + c.title + " поставили оценку " + str(count_stars)
 
         if int(count_stars) >= 4:
             self.is_good = True
@@ -100,7 +100,7 @@ class Review(FormView):
         print(name)
 
         r = Stars.objects.get(pk=review_id)
-        message = "На " + r.company.title + " поставили оценку " + r.count
+        message = "На " + r.company.title + " поставили оценку " + str(r.count)
 
         if review_text:
             r.message = review_text
