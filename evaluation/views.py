@@ -14,6 +14,7 @@ from .forms import ProfileUserForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class SendStar(FormView):
@@ -164,9 +165,10 @@ def update(request):
     return JsonResponse({"success": True}, status=200)
 
 
-class CustomPasswordChangeView(PasswordChangeView):
+class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
     template_name = 'edit_profile.html'
     success_url = reverse_lazy('profile-edit')
+    login_url = 'login'
 
     def form_valid(self, form):
         messages.success(self.request, 'Пароль успешно изменён.')
