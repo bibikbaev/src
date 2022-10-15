@@ -65,7 +65,7 @@ class AllReviews(LoginRequiredMixin, ListView):
     context_object_name = 'reviews'
     model = Companies
     paginate_by = 4
-
+    login_url = 'login'
 
     def get_queryset(self):
         c = Companies.objects.filter(owner=self.request.user)
@@ -86,6 +86,7 @@ class CompanyReviews(LoginRequiredMixin, ListView):
     context_object_name = 'reviews'
     model = Companies
     paginate_by = 4
+    login_url = 'login'
 
     def get_queryset(self):
         c = Companies.objects.get(slug=self.kwargs.get("company_slug"))
