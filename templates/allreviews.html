@@ -224,8 +224,16 @@
                       </span>
                       <div class="comment-footer">
                         <span class="text-muted float-end">{{ review.get_time|date:"H:i d E, Y" }}</span>
-                        <span class="l1 label label-success label-rounded">5</span
-                        >
+
+                          {% if review.count == 5 or review.count == 4 %}
+                          <span class="l1 label label-success label-rounded">
+                        {% elif review.count == 3 %}
+                          <span class="l1 label label-warning label-rounded">
+                        {% elif review.count == 2 or review.count == 1 %}
+                          <span class="l1 label label-danger label-rounded">
+                        {% endif  %}
+                              {{review.count}}
+                          </span>
 
                         {% if review.contact_info %}
                           <span class="l1 label label-rounded label-primary">
@@ -277,7 +285,7 @@
         </div>
 
         <footer class="footer text-center">
-          Создано ReviewSirius
+          Создано SiriusReview
 
         </footer>
 
