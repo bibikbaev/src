@@ -281,7 +281,7 @@
                              <div class="col-12">
                                     <div class="card">
                                         <div class="card-body">
-                                         <div class="align-items-center row"> <div class="col-6 pe-0"><h4 class="card-title">QR-код для использования</h4></div> <div class="col-6 col-sm-3 ps-0 ms-0"> <a class="ms-0 mb-1 btn btn-primary" href="{% qr_url_from_text 'http://127.0.0.1:8000/'|add:company.grouper.slug %}" download={{"QR-код-для-"|add:company.grouper.slug }}>Скачать</a></div></div>
+                                         <div class="align-items-center row"> <div class="col-6 pe-0"><h4 class="card-title">QR-код для использования</h4></div> <div class="col-6 col-sm-3 ps-0 ms-0"> <a class="ms-0 mb-1 btn btn-primary" href="{% qr_url_from_text 'https://siriusreview.ru/'|add:company.grouper.slug %}" download={{"QR-код-для-"|add:company.grouper.slug }}>Скачать</a></div></div>
                                             <img class="mt-3 mx-auto d-block" id="qrcode" src="{% qr_url_from_text 'http://127.0.0.1:8000/'|add:company.grouper.slug size="M" %}">
                                         </div>
                                     </div>
